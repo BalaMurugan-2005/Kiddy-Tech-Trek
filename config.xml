@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id = "org.coderdojo.phonegap"
+        version = "0.0.1"
+        versionCode = "230">
+    <name>CoderDojo Piano Game</name>
+
+    <description>
+        CoderDojo piano game
+    </description>
+
+    <author href="https://github.com/noelking">
+      Noel King
+    </author>
+
+    <feature name="http://api.phonegap.com/1.0/device" />
+
+    <preference name="phonegap-version" value="2.5.0" />
+    <preference name="orientation" value="landscape" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="exit-on-suspend" value="true" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="splash-screen-duration" value="3000" />
+
+    <icon src="images/coder.png"/>
+    <icon src="images/coder.png" gap:platform="android" gap:density="ldpi" />
+    <icon src="images/coder.png" gap:platform="android" gap:density="mdpi" />
+    <icon src="images/coder.png" gap:platform="android" gap:density="hdpi" />
+    <icon src="images/coder.png" gap:platform="android" gap:density="xhdpi" />
+
+</widget>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Unlock System for Kids</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Heading styling with bounce animation */
+        h2 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Task container styling */
+        .task-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Task styling */
+        .task {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .task:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Locked task styling */
+        .locked {
+            background: gray;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Unlocked task styling */
+        .unlocked {
+            background: #ffcc00;
+            color: white;
+            opacity: 1;
+            animation: unlockAnim 1s ease-in-out;
+        }
+
+        @keyframes unlockAnim {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Completed task styling */
+        .completed {
+            background: #00bfff;
+            color: white;
+            position: relative;
+        }
+
+        /* Tick symbol styling */
+        .tick {
+            width: 24px;
+            height: 24px;
+            display: none;
+        }
+
+        .completed .tick {
+            display: inline-block;
+            animation: tickFadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes tickFadeIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Lock icon styling */
+        .lock {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🎉 Task Unlock System for Kids 🎉</h2>
+    <div class="task-container">
+        <!-- Day 1 Task -->
+        <div id="day1" class="task unlocked" onclick="completeTask(1)">
+            Day 1 Task <img src="https://img.icons8.com/emoji/48/000000/check-mark-emoji.png" class="tick">
+        </div>
+
+        <!-- Day 2 Task -->
+        <div id="day2" class="task locked" onclick="completeTask(2)">
+            Day 2 Task <img src="https://img.icons8.com/color/48/000000/lock--v1.png" class="lock">
+        </div>
+
+        <!-- Day 3 Task -->
+        <div id="day3" class="task locked" onclick="completeTask(3)">
+            Day 3 Task <img src="https://img.icons8.com/color/48/000000/lock--v1.png" class="lock">
+        </div>
+
+        <!-- Day 4 Task -->
+        <div id="day4" class="task locked" onclick="completeTask(4)">
+            Day 4 Task <img src="https://img.icons8.com/color/48/000000/lock--v1.png" class="lock">
+        </div>
+
+        <!-- Day 5 Task -->
+        <div id="day5" class="task locked" onclick="completeTask(5)">
+            Day 5 Task <img src="https://img.icons8.com/color/48/000000/lock--v1.png" class="lock">
+        </div>
+
+        <!-- Day 6 Task -->
+        <div id="day6" class="task locked" onclick="completeTask(6)">
+            Day 6 Task <img src="https://img.icons8.com/color/48/000000/lock--v1.png" class="lock">
+        </div>
+    </div>
+
+    <script>
+        // Function to mark a task as completed
+        function completeTask(day) {
+            let task = document.getElementById("day" + day);
+
+            // Prevent clicking locked tasks
+            if (task.classList.contains("locked")) return;
+
+            // Mark task as completed
+            task.classList.remove("unlocked");
+            task.classList.add("completed");
+
+            // Show tick symbol
+            let tick = task.querySelector('.tick');
+            if (tick) tick.style.display = "inline-block";
+
+            // Save completed task to localStorage
+            let completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
+            if (!completedTasks.includes(day)) {
+                completedTasks.push(day);
+                localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+            }
+
+            // Unlock the next task after 1 second
+            setTimeout(unlockNextTask, 1000);
+        }
+
+        // Function to unlock the next task
+        function unlockNextTask() {
+            let completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
+            let nextTaskNum = completedTasks.length + 1;
+            let nextTask = document.getElementById("day" + nextTaskNum);
+
+            // Unlock the next task if it exists and is locked
+            if (nextTask && nextTask.classList.contains("locked")) {
+                nextTask.classList.remove("locked");
+                nextTask.classList.add("unlocked");
+
+                // Remove the lock icon
+                let lock = nextTask.querySelector('.lock');
+                if (lock) lock.remove();
+            }
+        }
+
+        // On page load, mark completed tasks and unlock the next task
+        document.addEventListener("DOMContentLoaded", function () {
+            let completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
+            completedTasks.forEach(task => {
+                let completedTask = document.getElementById("day" + task);
+                if (completedTask) {
+                    completedTask.classList.remove("unlocked");
+                    completedTask.classList.add("completed");
+                    let tick = completedTask.querySelector('.tick');
+                    if (tick) tick.style.display = "inline-block";
+                }
+            });
+
+            // Unlock the next task
+            unlockNextTask();
+        });
+    </script>
+
+</body>
+</html>

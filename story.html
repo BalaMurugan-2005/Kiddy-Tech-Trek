@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Video Player</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 20px;
+            transition: background-color 0.5s ease;
+            background-color: #f8c471;
+            color: #2c3e50;
+        }
+        .dark-mode {
+            background-color: #2c3e50;
+            color: #f8c471;
+        }
+        .video-container {
+            width: 70%;
+            margin: auto;
+            background: #ffeb3b;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: popIn 1s ease-in-out;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .controls button {
+            margin: 10px;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .controls button:hover {
+            transform: scale(1.1);
+        }
+        .play-btn { background: #ff5722; color: white; }
+        .mute-btn { background: #03a9f4; color: white; }
+        .fullscreen-btn { background: #4caf50; color: white; }
+        .toggle-mode { background: #673ab7; color: white; }
+    </style>
+</head>
+
+    
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function togglePlayPause() {
+            let video = document.getElementById("video");
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function toggleMute() {
+            let video = document.getElementById("video");
+            video.muted = !video.muted;
+        }
+
+        function toggleFullscreen() {
+            let video = document.getElementById("video");
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>
+<body>
+    <button class="top-right-button" onclick="openGame()">Open Game</button>
+    <button class="toggle-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <h1>🎥 Fun Video Player for Kids 🎥</h1>
+    <div class="video-container">
+        <video id="video" width="100%" controls>
+            <source src="story.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="controls">
+            <button class="play-btn" onclick="togglePlayPause()">▶ Play/Pause</button>
+            <button class="mute-btn" onclick="toggleMute()">🔊 Mute/Unmute</button>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">📺 Fullscreen</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function togglePlayPause() {
+            let video = document.getElementById("video");
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function toggleMute() {
+            let video = document.getElementById("video");
+            video.muted = !video.muted;
+        }
+
+        function toggleFullscreen() {
+            let video = document.getElementById("video");
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            }
+        }
+
+        function openGame() {
+            window.open('game.html', '_blank');
+        }
+    </script>
+    <style>
+        .top-right-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is above other elements */
+}
+
+.top-right-button:hover {
+    background-color: #e64a19;
+}
+
+    </style>
+</body>

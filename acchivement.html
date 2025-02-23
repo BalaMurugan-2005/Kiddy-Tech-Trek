@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids' Achievement Page</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
+            animation: scrollUp 5s infinite alternate ease-in-out;
+        }
+        h1 {
+            font-size: 3em;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .achievement-box {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .achievement-box:hover {
+            transform: scale(1.1);
+        }
+        input {
+            border: none;
+            padding: 5px;
+            width: 80%;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            background: #ff7eb3;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: #ff527b;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Kids' Achievement Page 🎉</h1>
+    <div class="container">
+        <h2>🏆 My Achievements:</h2>
+        <div class="achievement-box">Biggest Achievement: <input type="text"></div>
+        <div class="achievement-box">Proud Moment: <input type="text"></div>
+        <div class="achievement-box">Best Skill Learned: <input type="text"></div>
+        <div class="achievement-box">Most Fun Activity: <input type="text"></div>
+        <div class="achievement-box">Kindest Thing I Did: <input type="text"></div>
+    </div>
+    <div class="container">
+        <h2>🌟 My Superpowers:</h2>
+        <div class="achievement-box">I am great at: <input type="text"></div>
+        <div class="achievement-box">I am great at: <input type="text"></div>
+        <div class="achievement-box">I am great at: <input type="text"></div>
+    </div>
+    <div class="container">
+        <h2>💭 My Goals:</h2>
+        <div class="achievement-box">I want to achieve: <input type="text"></div>
+        <div class="achievement-box">I want to achieve: <input type="text"></div>
+        <div class="achievement-box">I want to achieve: <input type="text"></div>
+    </div>
+    <p>✨ "You are amazing, brave, and unstoppable! Keep believing in yourself and doing your best!" 💖 ✨</p>
+    <button>Submit</button>
+</body>
+</html>

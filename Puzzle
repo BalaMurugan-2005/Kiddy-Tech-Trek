@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Puzzle for Kids</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .puzzle-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 2px solid #ff6600;
+            cursor: pointer;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Fun Puzzle for Kids!</h1>
+    <p>Drag and drop the pieces to complete the puzzle.</p>
+    <div class="puzzle-container" id="puzzleContainer">
+        <img src="ben10_puzzle.jpg" class="puzzle-piece" draggable="true" ondragstart="drag(event)" id="piece1">
+        <img src="bheem_puzzle.jpg" class="puzzle-piece" draggable="true" ondragstart="drag(event)" id="piece2">
+    </div>
+    
+    <script>
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+    </script>
+</body>
+</html>
